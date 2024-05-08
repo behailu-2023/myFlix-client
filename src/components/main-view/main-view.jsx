@@ -7,7 +7,7 @@ import { title } from "process";
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
 
-    const [selectedMovie, setSelectedMovie] = useState(null);
+    //const [selectedMovie, setSelectedMovie] = useState(null);
     useEffect(() => {
         fetch("https://movie-api-7p14.onrender.com/movies")
         .then((response) => response.json())

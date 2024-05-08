@@ -27388,7 +27388,7 @@ var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
     const [movies, setMovies] = (0, _react.useState)([]);
-    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    //const [selectedMovie, setSelectedMovie] = useState(null);
     (0, _react.useEffect)(()=>{
         fetch("https://movie-api-7p14.onrender.com/movies").then((response)=>response.json()).then((data)=>{
             const movieFromApi = data.map((movie)=>{
@@ -27437,7 +27437,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
+_s(MainView, "MO6b3PSP3RIUqZ8gtSrBZBVtBbs=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
