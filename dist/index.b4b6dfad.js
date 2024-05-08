@@ -27390,7 +27390,7 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://movie-api-7p14.onrender.com").then((response)=>response.json()).then((data)=>{
+        fetch("https://movie-api-7p14.onrender.com/movies").then((response)=>response.json()).then((data)=>{
             const movieFromApi = data.map((movie)=>{
                 return {
                     id: movie._id,

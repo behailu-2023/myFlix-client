@@ -9,7 +9,7 @@ export const MainView = () => {
 
     const [selectedMovie, setSelectedMovie] = useState(null);
     useEffect(() => {
-        fetch("https://movie-api-7p14.onrender.com")
+        fetch("https://movie-api-7p14.onrender.com/movies")
         .then((response) => response.json())
         .then((data) => {
           const movieFromApi = data.map((movie) => { 
