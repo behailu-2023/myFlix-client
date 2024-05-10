@@ -7,24 +7,29 @@ import { title } from "process";
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
 
-    //const [selectedMovie, setSelectedMovie] = useState(null);
+    const [selectedMovie, setSelectedMovie] = useState(null);
     useEffect(() => {
         fetch("https://movie-api-7p14.onrender.com/movies")
         .then((response) => response.json())
         .then((data) => {
-          const movieFromApi = data.map((movie) => { 
+          //const movieFromApi = console.log((data) =>  { 
+          const movieFromApi = data.map((movies) => { 
           return {
-            id: movie._id,
-            title: movie.title,
-            description: movie.description,
-            genre: movie.genre,
-            director: movie.director,
-            image: movie.imageurl,
-            featured: movie.featured,
+            id: movies._id,
+            title: movies.Title,
+            description: movies.Description,
+            genre: movies.Genre,
+            director: movies.Director,
+            image: movies.imageurl,
+            featured: movies.featured,
           };
           });
         setMovies(movieFromApi);
+        })
+        .catch((error) => {
+            console.error("Error fetching movies:", error);
         });
+
        },[]);
     
     if (selectedMovie) {
