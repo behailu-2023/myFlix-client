@@ -28446,7 +28446,7 @@ const MovieView = ({ movie, onBackClick })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: onBackClick,
-                children: "Back"
+                children: "Back button"
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
                 lineNumber: 33,
