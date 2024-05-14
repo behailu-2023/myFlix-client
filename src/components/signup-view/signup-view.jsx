@@ -3,19 +3,19 @@ import React from "react";
 import { useState } from "react";
 
 export const SingupView = () => {
-  const [username, setUsername] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [birthday, setBirthday] = useState();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault(event)
 
     const data = {
-      UserName: username,
+      Username: username,
       Email: email,
-      Birthdate: birthday,
-      Password: password
+      Password: password,
+      Birthdate: birthday
     };
 
   fetch("https://movie-api-7p14.onrender.com/users", {
@@ -36,7 +36,8 @@ export const SingupView = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Username:</label>
+      <label>
+        Username:
       <input
         type="text"
         minLength={5}
@@ -44,16 +45,20 @@ export const SingupView = () => {
         onChange={(e) => setUsername(e.target.value)}
         required
       />
+      </label>
       <br />
-      <label> Email: </label>
+      <label> 
+        Email: 
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
       />
+      </label>
       <br />
-      <label>Password:</label>
+      <label>
+        Password:
       <input
         type="password"
         minLength={8}
@@ -61,16 +66,19 @@ export const SingupView = () => {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
+      </label>
       <br />
-      <label> Birthday: </label>
+      <label> 
+        Birthdate: 
       <input
         type="date"
         value={birthday}
         onChange={(e) => setBirthday(e.target.value)}
         required
       />
+      </label>
       <br />
-      <button type="submit"> Sign Up </button>
+      <button type="submit"> Submit </button>
     </form>
   );
 }

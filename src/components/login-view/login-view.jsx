@@ -16,7 +16,7 @@ export const LoginView = ({onLoggedIn}) => {
             Username: username,
             Password: password
         };
-        fetch("https://movie-api-7p14.onrender.com/account/login", {
+        fetch("https://movie-api-7p14.onrender.com/login?Username", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -52,7 +52,7 @@ export const LoginView = ({onLoggedIn}) => {
           Password:
           <input type="password" 
           value={password}
-          onChange={(e) => setUsername(e.target.value)} required
+          onChange={(e) => setPassword(e.target.value)} required
           />
         </label>
         <button type="submit">Submit</button>
