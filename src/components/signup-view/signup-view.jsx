@@ -2,7 +2,7 @@ import React from "react";
 
 import { useState } from "react";
 
-export const SingupView = () => {
+export const SingnupView = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

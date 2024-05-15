@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import {SingnupView} from "../signup-view/signup-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
-import { SignupView } from "../signup-view/signup-view";
+//import { SignupView } from "../signup-view/signup-view";
 import { title } from "process";
 
 
@@ -47,13 +48,15 @@ export const MainView = () => {
 
     if (!user) {
         return (
-            
+            <> 
             <LoginView onLoggedIn={(user, token) => {
                 setUser(user);
                 setToken(token);
             }} />
-            
-
+            or
+            <div>Signup Form</div>
+            <SingnupView/>
+            </>
         );
     }
 
