@@ -1,6 +1,7 @@
-//import "./movie-view.scss";
+import "./movie-view.scss";
 import {useState, useEffect} from "react";
 import PropTypes from "prop-types";
+
 export const MovieView = ({ movie, onBackClick }) => {
     return (
       <div>

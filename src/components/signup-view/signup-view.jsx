@@ -4,7 +4,7 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-export const SingnupView = () => {
+export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,7 +38,7 @@ export const SingnupView = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="=formUsername">
+      <Form.Group controlId="=signUpFormUsername">
         <Form.Label>
           Username:
         </Form.Label>
