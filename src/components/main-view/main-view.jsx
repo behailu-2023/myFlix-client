@@ -61,7 +61,7 @@ export const MainView = () => {
             }} />
             or
             <div>Signup Form</div>
-            <SingnupView/>
+            <SignupView/>
             </Col>
         
     ) : selectedMovie ? ( 

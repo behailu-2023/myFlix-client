@@ -10,10 +10,11 @@ import "./index.scss";
 
 // Main component (will eventually use all the others)
 const MyFlixApplication = () => {
-  return 
+  return ( 
   <Container>  
   <MainView/>
   </Container>
+  );
 };
   //return (
     //<div className="my-flix">
