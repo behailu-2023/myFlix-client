@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import {SignupView} from "../signup-view/signup-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -30,7 +31,7 @@ export const MainView = () => {
             .then((response) => response.json())
             .then((movies) => {
                 setMovies(movies);
-                const movieFromApi = data.map((movies) => {
+                const movieFromApi = movies.map((movies) => {
                     return {
                         id: movies._id,
                         title: movies.Title,

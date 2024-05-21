@@ -1,7 +1,3 @@
-img {
-  width: 100%;
-}
-
 *, :before, :after {
   box-sizing: border-box;
 }
@@ -7222,6 +7218,10 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
 
 .my-flix {
   color: #4682b4;
+}
+
+img {
+  width: 100%;
 }
 
 :root, [data-bs-theme="light"] {
