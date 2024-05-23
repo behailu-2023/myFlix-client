@@ -30280,11 +30280,61 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
-const MovieCard = ({ movie })=>{
+var _s = $RefreshSig$();
+const MovieCard = ({ movie, user, token, setUser })=>{
+    _s();
+    const [favoriteMovies, setfavoriteMovies] = (0, _react.useState)(false);
+    (0, _react.useEffect)(()=>{
+        setfavoriteMovies(user.favoritemovie && user.favoritemovie.includes(movie.id));
+    }, [
+        user,
+        movie.id
+    ]);
+    const addFavMovie = ()=>{
+        fetch(`https://movie-api-7p14.onrender.com/users/${user.userName}/movies/${movie.id}`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            if (!response.ok) throw new Error(`Failed to add favorite movie. Status: ${response.status}`);
+            return response.json();
+        }).then((user)=>{
+            if (user) {
+                alert("A new movie is added to your collection!");
+                localStorage.setItem("user", JSON.stringify(user));
+                setUser(user);
+                setfavoriteMovies(true);
+            }
+        }).catch((error)=>{
+            alert(error);
+        });
+    };
+    const delFavMovie = ()=>{
+        fetch(`https://movie-api-7p14.onrender.com/users/${user.userName}/movies/${movie.id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            if (response.ok) return response.json();
+            else alert("We couldn't remove it");
+        }).then((user)=>{
+            if (user) {
+                alert("You deleted a movie from your collection!");
+                localStorage.setItem("user", JSON.stringify(user));
+                setUser(user);
+                setfavoriteMovies(false);
+            }
+        }).catch((error)=>{
+            alert(error);
+        });
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
         className: "h-100",
         children: [
@@ -30293,7 +30343,7 @@ const MovieCard = ({ movie })=>{
                 src: movie.image
             }, void 0, false, {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 11,
+                lineNumber: 79,
                 columnNumber: 11
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -30305,7 +30355,7 @@ const MovieCard = ({ movie })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 13,
+                        lineNumber: 81,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
@@ -30315,7 +30365,7 @@ const MovieCard = ({ movie })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 14,
+                        lineNumber: 82,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -30325,27 +30375,50 @@ const MovieCard = ({ movie })=>{
                             children: "Open"
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 16,
+                            lineNumber: 84,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 15,
+                        lineNumber: 83,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                        to: `/movies/${encodeURIComponent(movie.id)}`,
+                        children: !favoriteMovies ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                            onClick: addFavMovie,
+                            children: "Add Favorite"
+                        }, void 0, false, {
+                            fileName: "src/components/movie-card/movie-card.jsx",
+                            lineNumber: 88,
+                            columnNumber: 15
+                        }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                            onClick: delFavMovie,
+                            children: "Remove"
+                        }, void 0, false, {
+                            fileName: "src/components/movie-card/movie-card.jsx",
+                            lineNumber: 90,
+                            columnNumber: 15
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/movie-card/movie-card.jsx",
+                        lineNumber: 86,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 12,
+                lineNumber: 80,
                 columnNumber: 11
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/movie-card/movie-card.jsx",
-        lineNumber: 10,
+        lineNumber: 78,
         columnNumber: 9
     }, undefined);
 };
+_s(MovieCard, "UbvDb9ncXyjJ8cs7/u2qt57mb7w=");
 _c = MovieCard;
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
@@ -30362,7 +30435,13 @@ MovieCard.propTypes = {
         }),
         image: (0, _propTypesDefault.default).string.isRequired,
         featured: (0, _propTypesDefault.default).bool
-    }).isRequired
+    }).isRequired,
+    user: (0, _propTypesDefault.default).shape({
+        userName: (0, _propTypesDefault.default).string.isRequired,
+        favoriteMovies: (0, _propTypesDefault.default).array.isRequired
+    }).isRequired,
+    token: (0, _propTypesDefault.default).string.isRequired,
+    setUser: (0, _propTypesDefault.default).func.isRequired
 };
 var _c;
 $RefreshReg$(_c, "MovieCard");
