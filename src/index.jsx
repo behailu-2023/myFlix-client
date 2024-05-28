@@ -2,6 +2,7 @@
 import { createRoot } from 'react-dom/client';
 import { MainView } from "./components/main-view/main-view";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Container from "react-bootstrap/Container";
 import process from 'process';
 

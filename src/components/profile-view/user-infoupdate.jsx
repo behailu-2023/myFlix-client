@@ -49,9 +49,7 @@ export const UpdateUser = ({ formData, handleUpdate, handleSubmit }) => {
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Confirm changes
-        </Button> 
+        <Button variant="primary" type="submit">Confirm changes</Button> 
         </Form>  
      </Row>   
   );
@@ -59,5 +57,6 @@ export const UpdateUser = ({ formData, handleUpdate, handleSubmit }) => {
 UpdateUser.propTypes = {
   formData: PropTypes.object.isRequired,
   handleUpdate: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  
 };

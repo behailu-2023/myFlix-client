@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
 import { useState, useEffect } from "react";
@@ -6,7 +6,12 @@ import PropTypes from "prop-types";
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
+  const navigate =useNavigate();
   const movie = movies.find((m) => m.id === movieId);
+
+  if (!movie) {
+    return <div>Movie not found</div>;
+  }
   return (
     <div>
       <div>
@@ -42,14 +47,21 @@ export const MovieView = ({ movies }) => {
 };
 
 MovieView.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    featured: PropTypes.bool,
-  }).isRequired,
-  //onMovieClick: PropTypes.func.isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      genre: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      }).isRequired,
+      director: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        bio: PropTypes.string.isRequired,
+      }).isRequired,
+      image: PropTypes.string.isRequired,
+      featured: PropTypes.bool,
+    })
+  ).isRequired,
 };
