@@ -11,7 +11,7 @@ import { UserInfo } from "./user-info";
 export const ProfileView = ({ token, user, movies, onSubmit }) => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    const [username, setUsername] = useState(user.UserName);
+    const [username, setUsername] = useState(user.Username);
     const [email, setEmail] = useState(user.Email);
     const [password, setPassword] = useState("");
     const [birthdate, setBirthdate] = useState(user.Birthdate);
@@ -89,7 +89,7 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
                     <Card.Title>My Account </Card.Title>
                         <Card.Text>
                             {
-                                user && (<UserInfo name ={user.username} email={user.email} />)
+                                user && (<UserInfo name ={user.Username} email={user.Email} />)
                             }
                         </Card.Text>              
                 </Card.Body>            

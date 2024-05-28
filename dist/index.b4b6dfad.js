@@ -27467,7 +27467,8 @@ const MainView = ()=>{
                                     md: 3,
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                         isFavorite: user.FavoriteMovies.includes(movie.title),
-                                        movie: movie
+                                        movie: movie,
+                                        user: user
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
                                         lineNumber: 136,
@@ -30333,7 +30334,7 @@ const MovieCard = ({ movie, user, token, setUser })=>{
     //setfavoriteMovies(user.favoritemovie && user.favoritemovie.includes(movie.title));
     //}, [user, movie.title]);
     const addToFavorites = ()=>{
-        fetch(`https://movie-api-7p14.onrender.com/users/${user.userName}/movies/${movie.title}`, {
+        fetch(`https://movie-api-7p14.onrender.com/users/${user.Username}/movies/${movie.title}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -42398,7 +42399,7 @@ var _s = $RefreshSig$();
 const ProfileView = ({ token, user, movies, onSubmit })=>{
     _s();
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    const [username, setUsername] = (0, _react.useState)(user.UserName);
+    const [username, setUsername] = (0, _react.useState)(user.Username);
     const [email, setEmail] = (0, _react.useState)(user.Email);
     const [password, setPassword] = (0, _react.useState)("");
     const [birthdate, setBirthdate] = (0, _react.useState)(user.Birthdate);
@@ -42469,8 +42470,8 @@ const ProfileView = ({ token, user, movies, onSubmit })=>{
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                                     children: user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userInfo.UserInfo), {
-                                        name: user.username,
-                                        email: user.email
+                                        name: user.Username,
+                                        email: user.Email
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view.jsx",
                                         lineNumber: 92,
@@ -42557,7 +42558,7 @@ const ProfileView = ({ token, user, movies, onSubmit })=>{
         ]
     }, void 0, true);
 };
-_s(ProfileView, "ISCJPuKlWyA9/q3wvaTP9JCptJw=");
+_s(ProfileView, "B0YiOPzWGvcnMOHMDjCQAeIjUDo=");
 _c = ProfileView;
 ProfileView.propTypes = {
     token: (0, _propTypesDefault.default).string.isRequired,

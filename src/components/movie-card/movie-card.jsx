@@ -26,7 +26,7 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
 
   const addToFavorites = () => {
     fetch(
-      `https://movie-api-7p14.onrender.com/users/${user.userName}/movies/${movie.title}`,
+      `https://movie-api-7p14.onrender.com/users/${user.Username}/movies/${movie.title}`,
       {
         method: "POST",
         headers: {
