@@ -13,8 +13,8 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
   //const [user, setUser] = useState(storedUser ? storedUser : null);
   //const [token, setToken] = useState(storedToken ? storedToken : null);
 
-  //const [addTitle, setAddTitle] = useState("");
-  //const [delTitle, setDelTitle] = useState("");
+  const [addTitle, setAddTitle] = useState("");
+  const [delTitle, setDelTitle] = useState("");
 
   const [favoriteMovies, setfavoriteMovies] = useState(false);
 
@@ -23,7 +23,7 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
     //setfavoriteMovies(user.favoritemovie && user.favoritemovie.includes(movie.title));
 
   //}, [user, movie.title]);
-
+  
   const addToFavorites = () => {
     fetch(
       `https://movie-api-7p14.onrender.com/users/${user.Username}/movies/${movie.title}`,
@@ -43,7 +43,7 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
       })
       .then(updatedUser => {
         
-          //alert("A new movie is added to your collection!");
+          alert("A new movie is added to your collection!");
           localStorage.setItem("user", JSON.stringify(updatedUser));
           setUser(updatedUser);
           setFavorite(true);
@@ -53,7 +53,7 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
 
   const removeFromFavorites = () => {
     fetch(
-      `https://movie-api-7p14.onrender.com/users/${user.userName}/movies/${movie.id}`,
+      `https://movie-api-7p14.onrender.com/users/${user.Username}/movies/${movie.id}`,
       {
         method: "DELETE",
         headers: {

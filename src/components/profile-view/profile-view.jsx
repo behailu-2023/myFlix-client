@@ -18,7 +18,7 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
     const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.title));
 
     const [formData, setFormData] = useState ({
-        UserName: username,
+        Username: username,
         Email: email,
         Password: password,
         Birthdate: birthdate
@@ -30,7 +30,7 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
     const handleSubmit = (event) => {
         event.preventDefault(event);
 
-        fetch(`https://movie-api-7p14.onrender.com/users/${user.UserName}`, {
+        fetch(`https://movie-api-7p14.onrender.com/users/${user.Username}`, {
 
             method: "PUT",
             headers: {

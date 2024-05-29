@@ -2,11 +2,15 @@ import { useParams, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
 import { useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
   const navigate =useNavigate();
+  const handleClick = () => {
+    navigate(-1); 
+  };
   const movie = movies.find((m) => m.id === movieId);
 
   if (!movie) {
@@ -41,7 +45,7 @@ export const MovieView = ({ movies }) => {
         <span>Director Bio: </span>
         <span>{movie.director.Bio}</span>
       </div>
-      <button className="back-button">Back</button>
+      <button variant="primary" onClick={handleClick}>Back</button>
     </div>
   );
 };
