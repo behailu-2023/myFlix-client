@@ -93,7 +93,7 @@ return (
         <Card.Img variant="top" src={movie.image} />
         <Card.Body>
           <Card.Title>{movie.title} </Card.Title>
-          <Card.Text>{movie.description} </Card.Text>
+          <Card.Text>{movie.genre} </Card.Text>
           <Link>
             <Button variant="link">Open</Button>
           </Link>
@@ -129,7 +129,7 @@ MovieCard.propTypes = {
     featured: PropTypes.bool,
   }).isRequired,
   user: PropTypes.shape({
-    userName: PropTypes.string.isRequired,
+    Username: PropTypes.string.isRequired,
     FavoriteMovies: PropTypes.array.isRequired,
   }).isRequired,
   token: PropTypes.string.isRequired,

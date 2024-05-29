@@ -122,7 +122,7 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
     };ProfileView.propTypes = {
         token: PropTypes.string.isRequired,
         user: PropTypes.shape({
-          UserName: PropTypes.string.isRequired,
+          Username: PropTypes.string.isRequired,
           Email: PropTypes.string.isRequired,
           Birthdate: PropTypes.string,
           FavoriteMovies: PropTypes.array.isRequired,

@@ -27,7 +27,7 @@ export const MovieView = ({ movies }) => {
       </div>
       <div>
         <span>Genre Name: </span>
-        <span>{movie.genre}</span>
+        <span>{movie.genreName}</span>
       </div>
       <div>
         <span>Genre Description: </span>
@@ -35,11 +35,11 @@ export const MovieView = ({ movies }) => {
       </div>
       <div>
         <span>Director Name: </span>
-        <span>{movie.director.name}</span>
+        <span>{movie.director.Name}</span>
       </div>
       <div>
         <span>Director Bio: </span>
-        <span>{movie.director.bio}</span>
+        <span>{movie.director.Bio}</span>
       </div>
       <button className="back-button">Back</button>
     </div>

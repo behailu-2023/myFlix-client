@@ -43,7 +43,7 @@ FavoriteMovies.propTypes = {
       })
     ).isRequired,
     user: PropTypes.shape({
-      UserName: PropTypes.string.isRequired,
+      Username: PropTypes.string.isRequired,
       FavoriteMovies: PropTypes.arrayOf(PropTypes.string).isRequired,
     }).isRequired,
   };

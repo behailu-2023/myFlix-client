@@ -30399,7 +30399,7 @@ const MovieCard = ({ movie, user, token, setUser })=>{
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                                     children: [
-                                        movie.description,
+                                        movie.genre,
                                         " "
                                     ]
                                 }, void 0, true, {
@@ -30483,7 +30483,7 @@ MovieCard.propTypes = {
         featured: (0, _propTypesDefault.default).bool
     }).isRequired,
     user: (0, _propTypesDefault.default).shape({
-        userName: (0, _propTypesDefault.default).string.isRequired,
+        Username: (0, _propTypesDefault.default).string.isRequired,
         FavoriteMovies: (0, _propTypesDefault.default).array.isRequired
     }).isRequired,
     token: (0, _propTypesDefault.default).string.isRequired,
@@ -41985,7 +41985,7 @@ const MovieView = ({ movies })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.genre
+                        children: movie.genreName
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 30,
@@ -42029,7 +42029,7 @@ const MovieView = ({ movies })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.director.name
+                        children: movie.director.Name
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 38,
@@ -42051,7 +42051,7 @@ const MovieView = ({ movies })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.director.bio
+                        children: movie.director.Bio
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 42,
@@ -42563,7 +42563,7 @@ _c = ProfileView;
 ProfileView.propTypes = {
     token: (0, _propTypesDefault.default).string.isRequired,
     user: (0, _propTypesDefault.default).shape({
-        UserName: (0, _propTypesDefault.default).string.isRequired,
+        Username: (0, _propTypesDefault.default).string.isRequired,
         Email: (0, _propTypesDefault.default).string.isRequired,
         Birthdate: (0, _propTypesDefault.default).string,
         FavoriteMovies: (0, _propTypesDefault.default).array.isRequired
@@ -42661,7 +42661,7 @@ FavoriteMovies.propTypes = {
         featured: (0, _propTypesDefault.default).bool
     })).isRequired,
     user: (0, _propTypesDefault.default).shape({
-        UserName: (0, _propTypesDefault.default).string.isRequired,
+        Username: (0, _propTypesDefault.default).string.isRequired,
         FavoriteMovies: (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).string).isRequired
     }).isRequired
 };
