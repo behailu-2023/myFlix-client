@@ -1,7 +1,8 @@
-import React from 'react';
+//import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { MainView } from "./components/main-view/main-view";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Container from "react-bootstrap/Container";
 import process from 'process';
 
@@ -10,17 +11,17 @@ import "./index.scss";
 
 // Main component (will eventually use all the others)
 const MyFlixApplication = () => {
-  return ( 
-  <Container>  
-  <MainView/>
-  </Container>
+  return (
+    <Container>
+      <MainView />
+    </Container>
   );
 };
-  //return (
-    //<div className="my-flix">
-      //<div>Good morning</div>
-   // </div>
-  //);
+//return (
+//<div className="my-flix">
+//<div>Good morning</div>
+// </div>
+//);
 //};
 
 // Finds the root of your app
