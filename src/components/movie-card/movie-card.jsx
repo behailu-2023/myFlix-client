@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./movie-card.scss";
 
 export const MovieCard = ({ movie, user, token, setUser }) => {
-  const [favorite, setFavorite] = useState(user && user.FavoriteMovies && user.FavoriteMovies.includes(movie.title));
+  const [favorite, setFavorite] = useState(user.FavoriteMovies.includes(movie.title));
+  //const [favorite, setFavorite] = useState(user && user.FavoriteMovies && user.FavoriteMovies.includes(movie.title));
 
 
   const storedToken = localStorage.getItem("token");
@@ -26,7 +28,7 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
   
   const addToFavorites = () => {
     fetch(
-      `https://movie-api-7p14.onrender.com/users/${user.Username}/movies/${movie.title}`,
+      `https://movie-api-7p14.onrender.com/users/${user.Username}/movies/${movie.id}`,
       {
         method: "POST",
         headers: {
@@ -63,7 +65,7 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
       }
     )
       .then(response => {
-        if (response.ok) {
+        if (!response.ok) {
           throw new Error("Failed to remove favorite movie.");
         } 
         return response.json();
@@ -87,28 +89,21 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
 
 
 return (
-  <>
-    <Link className="link-card" to={`/movies/${encodeURIComponent(movie.id)}`}>
-      <Card>
-        <Card.Img variant="top" src={movie.image} />
-        <Card.Body>
-          <Card.Title>{movie.title} </Card.Title>
-          <Card.Text>{movie.genre} </Card.Text>
-          <Link>
-            <Button variant="link">Open</Button>
-          </Link>
-        </Card.Body>
-      </Card>
+  <Card className="h-100">
+  <Card.Img variant="top" src={movie.image} />
+  <Card.Body>
+    <Card.Title>{movie.title}</Card.Title>
+    <Card.Text>{movie.genre.name}</Card.Text>
+    <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
+      <Button variant="link">Open</Button>
     </Link>
-    <Card>
-      {!favorite ? (
-        <Button variant="primary" onClick={addToFavorites}>Add Favorite</Button>
-      ) : (
-        <Button variant="primary" onClick={removeFromFavorites}>Remove Favorite</Button>
-      )}
-    </Card>
-
-  </>
+    {favorite ? (
+      <Button variant="danger" onClick={removeFromFavorites}>Remove from Favorites</Button>
+    ) : (
+      <Button variant="success" onClick={addToFavorites}>Add to Favorites</Button>
+    )}
+  </Card.Body>
+</Card>
 );
   };
 
@@ -120,11 +115,11 @@ MovieCard.propTypes = {
     genre: PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-    }),
+    }).isRequired,
     director: PropTypes.shape({
       name: PropTypes.string.isRequired,
       bio: PropTypes.string.isRequired
-    }),
+    }).isRequired,
     image: PropTypes.string.isRequired,
     featured: PropTypes.bool,
   }).isRequired,
