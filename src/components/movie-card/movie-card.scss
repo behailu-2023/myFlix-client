@@ -1,0 +1,65 @@
+.movie-card {
+    .card {
+      transition: transform 0.2s, box-shadow 0.2s;
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
+  
+    .card-img-top {
+      height: 300px;
+      object-fit: cover;
+    }
+  
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 15px;
+  
+      .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+  
+      .card-text {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+  
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+  
+        .btn {
+          flex: 1;
+          margin: 5px;
+          font-size: 1rem;
+          &.btn-link {
+            color: #007bff;
+            &:hover {
+              color: #0056b3;
+            }
+          }
+          &.btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            &:hover {
+              background-color: #218838;
+              border-color: #1e7e34;
+            }
+          }
+          &.btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            &:hover {
+              background-color: #c82333;
+              border-color: #bd2130;
+            }
+          }
+        }
+      }
+    }
+  }
+  

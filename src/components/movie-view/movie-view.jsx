@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 
+
+
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
   const navigate =useNavigate();
@@ -17,10 +19,9 @@ export const MovieView = ({ movies }) => {
     return <div>Movie not found</div>;
   }
   return (
-    <div>
-      <div>
-        <img className="w-100" src={movie.image} />
-      </div>
+    
+      <div className="movie-view">
+        <img className="w-100" src={movie.image} alt={movie.title} />
       <div>
         <span>Title: </span>
         <span>{movie.title}</span>
@@ -31,19 +32,19 @@ export const MovieView = ({ movies }) => {
       </div>
       <div>
         <span>Genre Name: </span>
-        <span>{movie.genreName}</span>
+        <span>{movie.genre.name}</span>
       </div>
       <div>
         <span>Genre Description: </span>
-        <span>{movie.genre}</span>
+        <span>{movie.genre.description}</span>
       </div>
       <div>
         <span>Director Name: </span>
-        <span>{movie.director.Name}</span>
+        <span>{movie.director.name}</span>
       </div>
       <div>
         <span>Director Bio: </span>
-        <span>{movie.director.Bio}</span>
+        <span>{movie.director.bio}</span>
       </div>
       <button variant="primary" onClick={handleClick}>Back</button>
     </div>
