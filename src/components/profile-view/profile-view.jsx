@@ -9,7 +9,7 @@ import { UpdateUser } from "./user-infoupdate";
 import { UserInfo } from "./user-info";
 
 export const ProfileView = ({ token, user, movies, onSubmit }) => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    //const storedUser = JSON.parse(localStorage.getItem("user"));
 
     const [username, setUsername] = useState(user.Username);
     const [email, setEmail] = useState(user.Email);
@@ -18,12 +18,20 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
     //const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.title));
 
     const [formData, setFormData] = useState({
-        Username: username,
-        Email: email,
-        Password: password,
-        Birthdate: birthdate
+        Username: user.Username,
+        Email: user.Email,
+        Password: "",
+        Birthdate: user.Birthdate
     });
 
+    useEffect(() => {
+        setFormData({
+            Username: user.Username,
+            Email: user.Email,
+            Password: "",
+            Birthdate: user.Birthdate
+        });
+    }, [user]);
 
     //formData.Birthdate = birthdate ? new Date(birthdate).toISO8601 : null;
 
@@ -52,9 +60,11 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
             .then((updatedUser) => {
                 localStorage.setItem("user", JSON.stringify(updatedUser));
                 onSubmit(updatedUser);
+                alert("Update successful");
             })
             .catch((error) => {
                 console.error(error);
+                alert("Update failed");
             });
     };
 
@@ -64,7 +74,7 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
     };
 
     const handleDeleteAccount = (id) => {
-        fetch(`https://movie-api-7p14.onrender.com/users/${id}`, {
+        fetch(`https://movie-api-7p14.onrender.com/users/${user.Username}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -106,7 +116,7 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
                     </Card.Body>
                 </Card>
             </Row>
-            <Button onClick={() => handleDeleteAccount(storedUser._id)}
+            <Button onClick={ handleDeleteAccount}
                 className="button-delete mb-5"
                 type="submit" variant="outline-secondary"
             >

@@ -17,12 +17,7 @@ const MyFlixApplication = () => {
     </Container>
   );
 };
-//return (
-//<div className="my-flix">
-//<div>Good morning</div>
-// </div>
-//);
-//};
+
 
 // Finds the root of your app
 const container = document.querySelector("#root");
