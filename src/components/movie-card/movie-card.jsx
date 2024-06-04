@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./movie-card.scss";
 
 export const MovieCard = ({ movie, user, token, setUser }) => {
-  const [favorite, setFavorite] = useState(user.FavoriteMovies.includes(movie.title));
+  const [favorite, setFavorite] = useState(user.FavoriteMovies.includes(movie.id));
   //const [favorite, setFavorite] = useState(user && user.FavoriteMovies && user.FavoriteMovies.includes(movie.title));
 
 
@@ -21,10 +21,7 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
   const [favoriteMovies, setfavoriteMovies] = useState(false);
 
 
-  //useEffect(() => {
-    //setfavoriteMovies(user.favoritemovie && user.favoritemovie.includes(movie.title));
-
-  //}, [user, movie.title]);
+  
   
   const addToFavorites = () => {
     fetch(
@@ -81,12 +78,7 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
       .catch(error => alert(error));
       
   };
-  //if (addTitle)addToFavorites();}if (delTitle) {handleRemoveFromFavorites();}}, [addTitle, delTitle, token]);
-
-
-//const handleAddToFavorites = () => {setAddTitle(movie.title);};
-//const handleRemoveFromFavorites = () => {setDelTitle(movie.title);}; 
-
+  
 
 return (
   <Card className="h-100">
@@ -107,26 +99,4 @@ return (
 );
   };
 
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    genre: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }).isRequired,
-    director: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      bio: PropTypes.string.isRequired
-    }).isRequired,
-    image: PropTypes.string.isRequired,
-    featured: PropTypes.bool,
-  }).isRequired,
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    FavoriteMovies: PropTypes.array.isRequired,
-  }).isRequired,
-  token: PropTypes.string.isRequired,
-  setUser: PropTypes.func.isRequired,
-};
+

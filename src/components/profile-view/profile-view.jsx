@@ -115,7 +115,7 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
             <Row>
                 <Col className="mb-5" xs={12} md={12}>
                     {
-                        FavoriteMovies && (<favouriteMovies user={user} favoriteMovies={favoriteMovies} />)
+                        favoriteMovies && (<FavoriteMovies user={user} favoriteMovies={favoriteMovies} />)
                     }
                 </Col>
 
@@ -139,30 +139,3 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
     )
 };
 
-ProfileView.propTypes = {
-    user: PropTypes.shape({
-      Username: PropTypes.string.isRequired,
-      Email: PropTypes.string.isRequired,
-      Birthdate: PropTypes.string.isRequired,
-      FavoriteMovies: PropTypes.arrayOf(PropTypes.string).isRequired,
-    }).isRequired,
-    token: PropTypes.string.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-    movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        genre: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          description: PropTypes.string.isRequired,
-        }).isRequired,
-        director: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          bio: PropTypes.string.isRequired,
-        }).isRequired,
-        image: PropTypes.string.isRequired,
-        featured: PropTypes.bool,
-      })
-    ).isRequired,
-};
