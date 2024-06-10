@@ -38,7 +38,7 @@ export const ProfileView = ({ token, user, movies, onSubmit }) => {
     const handleSubmit = (event) => {
         event.preventDefault(event);
 
-        fetch(`https://movie-api-7p14.onrender.com/users/${users.Username}`, {
+        fetch(`https://movie-api-7p14.onrender.com/users/${user.Username}`, {
 
             method: "PUT",
             headers: {
